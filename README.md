@@ -2,7 +2,7 @@
  Use binance Websocket, Subscribe to BTCUSDT kline/candlestick, Store data on MongoDB, Show data with a Get Request.
 
 
-# API end points:
+# API end points: (First Implementation)
 
 GET /binance/subBtcusdt:
    
@@ -22,4 +22,10 @@ GET /binance/deleteData:
 
 
 # OR: (Second Implementation)
- Uncomment the ```// BinanceSocketModule``` in ```src/app.module.ts```, to Subscribe and Store data Automatically when App Starts
+Uncomment the ```// BinanceSocketModule``` in ```src/app.module.ts```, to Subscribe and Store data Automatically when App Starts.
+
+And use
+
+GET /binance/showData:
+   
+     Show stored data to User
