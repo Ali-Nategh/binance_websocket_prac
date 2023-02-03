@@ -1,12 +1,9 @@
 import { Injectable } from '@nestjs/common';
 import Binance from 'binance-api-node';
-import { RedisCacheService } from '../test_redis_cache/redis-cache.service';
 import { KlineCandleRepository } from './kline-candle.repository';
 import { KlineCandle } from './schemas/kline-candle.schema';
-
+// import { RedisCacheService } from '../test_redis_cache/redis-cache.service';
 // import { createClient } from '@redis/client';
-
-
 
 
 @Injectable()
@@ -14,7 +11,7 @@ export class BinanceService {
     private client: any;
 
     constructor(
-        // private cacheManager: RedisCacheService,
+        // private cacheManager: RedisCacheService, // DID NOT WORK
         private readonly klineCandleRepository: KlineCandleRepository
     ) {
         this.client = Binance();

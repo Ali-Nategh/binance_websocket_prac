@@ -11,9 +11,10 @@ import { ConfigModule } from '@nestjs/config';
   imports: [
     MongooseModule.forRoot('mongodb://127.0.0.1:27017/ws'),
     SocketModule,
-    // BinanceSocketModule,
-    // RedisCacheModule,
-    // ConfigModule.forRoot({ isGlobal: true }),
+    // BinanceSocketModule, // ------ UNCOMMENT TO SUBSCRIBE AND STORE DATA AUTOMATICALLY ------
+
+    // // RedisCacheModule, // DID NOT IMPLEMENT
+    // // ConfigModule.forRoot({ isGlobal: true }), // DID NOT IMPLEMENT
   ],
   controllers: [AppController],
   providers: [AppService],

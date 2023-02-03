@@ -13,13 +13,13 @@ export class BinanceController {
     }
 
     @Get('showData')
-    // Return the Cached BTCUSDT data
+    // Return the Stored BTCUSDT data
     async listBTCUSTD() {
         return await this.binanceService.listAllCandles();
     }
 
     @Get('deleteData')
-    // Return the Cached BTCUSDT data
+    // Delete the Stored data
     async deleteDatabase() {
         await this.binanceService.deleteDatabase();
         return 'Stored data deleted successfully'

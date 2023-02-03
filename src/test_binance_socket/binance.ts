@@ -1,7 +1,7 @@
 import { Injectable, OnModuleInit } from "@nestjs/common";
-import { io, Socket } from "socket.io-client";
-import { Spot } from '@binance/connector'
 import { KlineCandleRepository } from "src/websocket/kline-candle.repository";
+import { Spot } from '@binance/connector' // 2nd Implementation
+// import { io, Socket } from "socket.io-client";
 
 
 @Injectable()
@@ -21,7 +21,7 @@ export class BinanceSocketClient
             close: () => logger.info('closed'),
             message: async (data: any) => {
                 data = JSON.parse(data)
-                // console.log('\n', data)
+                // console.log('\n', data) // FOR TESTS
                 await this.klineCandleRepository.create({
                     eventType: data.e,
                     eventTime: data.E,
@@ -37,28 +37,14 @@ export class BinanceSocketClient
             client.pingServer(wsRef)
         }, 50000)
 
-        // disconnect after 1 minute
+        // // disconnect after 1 minute
         // setTimeout(() => client.unsubscribe(wsRef), 60000)
     }
 
 
     //-----------------------------------------------------------------------------------------
-
-    // onModuleInit() {
-    // client = new Spot('', '', {
-    //     wsURL: 'wss://testnet.binance.vision' // wss://stream.binance.com:9443
-    // })
-
-    // callbacks = {
-    //     open: () => this.client.logger.log('open'),
-    //     close: () => this.client.logger.log('closed'),
-    //     message: data => this.client.logger.log(data)
-    // }
-    // aggTrade = this.client.aggTradeWS('btcusdt', this.callbacks)
-
-    // setTimeout(() => client.unsubscribe(aggTrade), 3000)
-    // }
-    //-----------------------------------------------------------------------------------------
+    //--------------------------THIS IMPLEMENTATION DID NOT WORK-------------------------------
+    // // Couldn't get any response back from the server or it didn't connect properly
 
     // public socketClient: Socket;
 

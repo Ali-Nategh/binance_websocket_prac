@@ -15,6 +15,7 @@ export class KlineCandle {
     symbol: string;
 
     @Prop(raw({
+        // the "k" part
         t: { type: Number },
         T: { type: Number },
         s: { type: String },
@@ -32,11 +33,13 @@ export class KlineCandle {
         V: { type: String },
         Q: { type: String },
         B: { type: String },
+        // store the whole object
         kline: { type: Object }
     }))
     kLineInfo: Record<string, any>;
 }
 
+// A Kline/CandleStick Response:
 // {
 //     e: 'kline',
 //     E: 1675423484000,
@@ -62,6 +65,8 @@ export class KlineCandle {
 //     }
 //   }
 
+// Other Implementations Response:
+// {
 //   eventType: 'kline',
 //   eventTime: 1675421602000,
 //   symbol: 'BTCUSDT',
@@ -80,5 +85,6 @@ export class KlineCandle {
 //   quoteVolume: '28839.52785780',
 //   buyVolume: '0.30743000',
 //   quoteBuyVolume: '7203.87831060'
+// }
 
 export const KlineCandleSchema = SchemaFactory.createForClass(KlineCandle);

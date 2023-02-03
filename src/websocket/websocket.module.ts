@@ -7,7 +7,7 @@ import { BinanceController } from "./websocket.controller"
 import { BinanceService } from "./websocket.service"
 
 @Module({
-    // imports: [RedisCacheModule],
+    // imports: [RedisCacheModule], // DID NOT WORK
     imports: [MongooseModule.forFeature([{ name: KlineCandle.name, schema: KlineCandleSchema }])],
     providers: [BinanceService, KlineCandleRepository],
     controllers: [BinanceController]

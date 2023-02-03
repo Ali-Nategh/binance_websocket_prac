@@ -10,8 +10,8 @@ import { createClient } from '@redis/client';
         CacheModule.registerAsync({
             imports: [ConfigModule],
             inject: [ConfigService],
+            // useFactory ERROR with "store: redisStore":
             // useFactory?: (...args: any[]) => Promise<CacheModuleOptions<StoreConfig>> | CacheModuleOptions<StoreConfig>;
-
             useFactory: async (configService: ConfigService) => ({
                 // store: redisStore,
                 host: configService.get('127.0.0.1'),
